@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Send Button Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom styles for the send button */
+        .send-button {
+            width: 150px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>WhatsApp Group Automatically Sending based on Google Sheet</h2>
+
+    <!-- Send button -->
+    <button id="sendButton" class="btn btn-primary send-button">Send</button>
+
+    <!-- Display response -->
+    <div id="response"></div>
+</div>
+
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+
+
+<script>
+    // AJAX request when the send button is clicked
+    $(document).ready(function() {
+        toastr.options = {
+            positionClass: 'toast-top-right', // Adjust the position of the toastr message
+            closeButton: true, // Show a close button on the toastr message
+            progressBar: true // Show a progress bar on the toastr message
+        };
+
+        $('#sendButton').click(function() {
+            $.ajax({
+                url: './api.php', // Replace with your backend script URL
+                type: 'POST',
+                data: {
+                    // Add any data you want to send to the backend here
+                },
+                success: function(response) {
+                    // Handle the response from the backend
+                    toastr.success('Success message goes here');
+                },
+                error: function(xhr, status, error) {
+                    // Handle any errors that occur during the AJAX request
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
