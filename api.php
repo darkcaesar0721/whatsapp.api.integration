@@ -9,6 +9,7 @@ error_reporting(E_ERROR);
 $token = 'vepszz8ae514rgkf';
 $instance_id = 'instance54684';
 
+// This is a shared google sheet url.
 $url = 'https://docs.google.com/spreadsheets/d/1fqf29GzyNGbdkL_5HMEDbMEarU4bwagzshXpcRGlcqg/edit?pli=1#gid=0';
 
 $url_array = parse_url($url);
